@@ -34,7 +34,9 @@
 ## 一覧表示
 更新日時や投稿日時で並べ替えることができます。  
 ![top](/img/top.png)  
-![top2](/img/top2.png)
+![top2](/img/top2.png)  
+![detail](/img/detail.png)  
+![detail2](/img/detail2.png)  
 
 ## マイページ
 投稿一覧とお気に入りの一覧を見ることができます。  
