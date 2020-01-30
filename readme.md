@@ -35,6 +35,7 @@
 更新日時や投稿日時で並べ替えることができます。  
 ![top](/img/top.png)  
 ![top2](/img/top2.png)  
+画像をクリックすると詳細ページへ飛びます。
 ![detail](/img/detail.png)  
 ![detail2](/img/detail2.png)  
 
