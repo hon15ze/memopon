@@ -30,13 +30,13 @@ if(!empty($_POST)){
         //emailの形式チェック
         validEmail($email, 'email');
         //emailの最大文字数チェック
-validMaxLen($email, 'email');
+        validMaxLen($email, 'email');
 
-if(empty($err_msg)){
-    debug('バリデーションOK。');
+    if(empty($err_msg)){
+        debug('バリデーションOK。');
 
-    //例外処理
-    try {
+        //例外処理
+        try {
         // DBへ接続
         $dbh = dbConnect();
         // SQL文作成
@@ -76,77 +76,81 @@ URL http://localhost:8888/memopon/index.php
 E-mail ＊＊＊＊＊＊＊＊＊＊＊
 ////////////////////////////////////////
 EOF;
-sendMail($from, $to, $subject, $comment);
+     sendMail($from, $to, $subject, $comment);
 
-//認証に必要な情報をセッションへ保存
-$_SESSION['auth_key'] = $auth_key;
-$_SESSION['auth_email'] = $email;
-$_SESSION['auth_key_limit'] = time()+(60*30);
-debug('セッション変数の中身：'.print_r($_SESSION,true));
+    //認証に必要な情報をセッションへ保存
+    $_SESSION['auth_key'] = $auth_key;
+    $_SESSION['auth_email'] = $email;
+    $_SESSION['auth_key_limit'] = time()+(60*30);
+    debug('セッション変数の中身：'.print_r($_SESSION,true));
 
-header("Location:passRemindRecieve.php"); //認証キー入力ページへ
+    header("Location:passRemindRecieve.php"); //認証キー入力ページへ
 
         }else{
             debug('クエリに失敗したかDBに登録のないEmailが入力されました。');
             $err_msg['common'] = MSG07;
         }
 
-    } catch (Exception $e) {
+        } catch (Exception $e) {
         error_log('エラー発生:' . $e->getMessage());
         $err_msg['common'] = MSG07;
-    }
-}
+        }
+      }
     }
 }
 ?>
 <?php
-$siteTitle = 'パスワード再発行メール送信';
-require('head.php');
+    $siteTitle = 'パスワード再発行メール送信';
+    require('head.php');
 ?>
 
 <body class="page-login page-1colum">
 
-<!-- メニュー -->
+    <!-- メニュー -->
 <?php
-require('header.php');
+    require('header.php');
 ?>
 
-<!-- メインコンテンツ -->
-<div id="contents">
-<div class="site-width">
-<!-- Main -->
-<section id="main">
+    <!-- メインコンテンツ -->
+    <div id="contents">
+        <div class="site-width">
+        <!-- Main -->
+        <section id="main">
 
-<div class="form-container">
+            <div class="form-container">
 
-<form action="" method="post" class="form">
-<p>ご指定のメールアドレス宛にパスワード再発行用のURLと認証キーをお送り致します。</p>
-<div class="area-msg">
-<?php
-if(!empty($err_msg['common'])) echo $err_msg['common'];
-?>
-</div>
-<label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
-Email
-<input type="text" name="email" value="<?php echo getFormData('email'); ?>">
-</label>
-<div class="area-msg">
-<?php
-if(!empty($err_msg['email'])) echo $err_msg['email'];
-?>
-</div>
-<div class="btn-container">
-<input type="submit" class="btn btn-mid" value="送信する">
-</div>
-</form>
-</div>
-<a href="mypage.php">&lt; マイページに戻る</a>
-</section>
+                <form action="" method="post" class="form">
+                    <p>ご指定のメールアドレス宛にパスワード再発行用のURLと認証キーをお送り致します。</p>
+                <div class="area-msg">
+                    <?php
+                        if(!empty($err_msg['common'])) echo $err_msg['common'];
+                    ?>
+                </div>
 
-</div>
-</div>
+                    <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
+                    Email
+                    <input type="text" name="email" value="<?php echo getFormData('email'); ?>">
+                    </label>
+
+                    <div class="area-msg">
+                    <?php
+                        if(!empty($err_msg['email'])) echo $err_msg['email'];
+                    ?>
+                    </div>
+
+                    <div class="btn-container">
+                        <input type="submit" class="btn btn-mid" value="送信する">
+                    </div>
+                </form>
+            </div>
+
+            <a href="mypage.php">&lt; マイページに戻る</a>
+        </section>
+
+        </div>
+    </div>
 
 <!-- footer -->
 <?php
-require('footer.php');
+    require('footer.php');
 ?>

@@ -51,41 +51,42 @@ if($stmt1){
 debug('画面表示処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 ?>
 <?php
-$siteTitle = '退会';
-require('head.php');
+    $siteTitle = '退会';
+    require('head.php');
 ?>
 
 <body class="page-withdraw page-2colum page-logined">
 
 <!-- メニュー -->
 <?php
-require('header.php');
+    require('header.php');
 ?>
 
 <!-- メインコンテンツ -->
 <div id="contents">
-<div class="site-width">
+    <div class="site-width">
 
-<!-- Main -->    
-<section id="main" >
-            <form action="" method="post" class="form withdraw-form">
-                <h2 class="wd-margin"><i class="fas fa-user-slash"></i>退会</h2>
-                <div class="area-msg">
-                    <?php
-                    if(!empty($err_msg['common'])) echo $err_msg['common'];
-                    ?>
+    <!-- Main -->    
+        <section id="main" >
+                <form action="" method="post" class="form withdraw-form">
+                    <h2 class="wd-margin"><i class="fas fa-user-slash"></i>退会</h2>
+                    <div class="area-msg">
+                        <?php
+                            if(!empty($err_msg['common'])) echo $err_msg['common'];
+                        ?>
                     </div>
+
                     <div class="btn-container">
-                    <input type="submit" class="btn btn-mid btn-m" value="退会する" name="submit">
-                </div>
-            </form>
+                        <input type="submit" class="btn btn-mid btn-m" value="退会する" name="submit">
+                    </div>
+                </form>
         
         <p class="back-mypage"><a href="mypage.php">&lt; マイページに戻る</a></p>
-    </section>
-</div>
+        </section>
+    </div>
 </div>
 
 <!-- footer -->
 <?php
-require('footer.php');
+    require('footer.php');
 ?>

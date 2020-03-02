@@ -168,6 +168,6 @@ require('header.php');
     </div>
 
 <!-- footer -->
-<?php
-require('footer.php');
-?>
+    <?php
+        require('footer.php');
+    ?>

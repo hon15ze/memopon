@@ -30,8 +30,8 @@ if(!empty($_POST)){
     $email = $_POST['email'];
     //画像をアップロードし、パスを格納
     $pic = ( !empty($_FILES['pic']['name']) ) ? uploadImg($_FILES['pic'],'pic') : '';
-// 画像をPOSTしてない（登録していない）が既にDBに登録されている場合、DBのパスを入れる（POSTには反映されないので）
-$pic = ( empty($pic) && !empty($dbFormData['pic']) ) ? $dbFormData['pic'] : $pic;
+    // 画像をPOSTしてない（登録していない）が既にDBに登録されている場合、DBのパスを入れる（POSTには反映されないので）
+    $pic = ( empty($pic) && !empty($dbFormData['pic']) ) ? $dbFormData['pic'] : $pic;
 
     //DBの情報と入力情報が異なる場合にバリデーションを行う
     if($dbFormData['username'] !== $username){
@@ -80,75 +80,84 @@ $pic = ( empty($pic) && !empty($dbFormData['pic']) ) ? $dbFormData['pic'] : $pic
 debug('画面表示処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 ?>
 <?php
-$siteTitle = 'プロフィール編集';
-require('head.php');
+    $siteTitle = 'プロフィール編集';
+    require('head.php');
 ?>
 
 <body class="page-profEdit page-2colum page-logined">
 
 <!-- メニュー -->
 <?php
-require('header.php');
+    require('header.php');
 ?>
 
 <!-- メインコンテンツ -->
 <div id="contents">
-<div class="site-width">
-<h1 class="page-title"><i class="far fa-address-card"></i>Profile編集</h1>
- <!-- Main -->
- <section id="main" >
-    <div class="form-container">
-    <form action="" method="post" class="form" enctype="multipart/form-data">
-      <div class="area-msg">
-           <?php
-           if(!empty($err_msg['common'])) echo $err_msg['common'];
-           ?>
-      </div>
-            <label class="<?php if(!empty($err_msg['username'])) echo 'err'; ?>">
-                ニックネーム
-                <input type="text" name="username" value="<?php echo getFormData('username'); ?>">
-            </label>
-            <div class="area-msg">
-           <?php
-           if(!empty($err_msg['username'])) echo $err_msg['username'];
-           ?>
-      </div>
-            <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
-                Email
-                <input type="text" name="email" value="<?php echo getFormData('email'); ?>">
-            </label>
-            <div class="area-msg">
-           <?php
-           if(!empty($err_msg['email'])) echo $err_msg['email'];
-           ?>
-           </div>
-プロフィール画像
-<label class="area-drop <?php if(!empty($err_msg['pic'])) echo 'err'; ?>" style="height:370px;line-height:370px;">
-<input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-<input type="file" name="pic" class="input-file" style="height:370px;">
-<img src="<?php echo getFormData('pic'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic'))) echo 'display:none;' ?>">
-ドラッグ＆ドロップ
-</label>
-<div class="area-msg">
-<?php
-if(!empty($err_msg['pic'])) echo $err_msg['pic'];
-?>
-</div>
-        <div class="btn-container">
-            <input type="submit" class="btn btn-mid" value="変更する">
-        </div>
-        </form>
-    </div>
-</section>
+    <div class="site-width">
+    <h1 class="page-title"><i class="far fa-address-card"></i>Profile編集</h1>
 
-<!-- サイドバー -->
-<?php
-require('sidebar_mypage.php');
-?>
-</div>
+    <!-- Main -->
+    <section id="main" >
+        <div class="form-container">
+            <form action="" method="post" class="form" enctype="multipart/form-data">
+                <div class="area-msg">
+                    <?php
+                        if(!empty($err_msg['common'])) echo $err_msg['common'];
+                    ?>
+                </div>
+
+                <label class="<?php if(!empty($err_msg['username'])) echo 'err'; ?>">
+                    ニックネーム
+                    <input type="text" name="username" value="<?php echo getFormData('username'); ?>">
+                </label>
+
+                <div class="area-msg">
+                    <?php
+                        if(!empty($err_msg['username'])) echo $err_msg['username'];
+                    ?>
+                </div>
+
+                <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
+                    Email
+                    <input type="text" name="email" value="<?php echo getFormData('email'); ?>">
+                </label>
+
+               <div class="area-msg">
+                    <?php
+                        if(!empty($err_msg['email'])) echo $err_msg['email'];
+                    ?>
+                </div>
+
+                プロフィール画像
+                <label class="area-drop <?php if(!empty($err_msg['pic'])) echo 'err'; ?>" style="height:370px;line-height:370px;">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                    <input type="file" name="pic" class="input-file" style="height:370px;">
+                    <img src="<?php echo getFormData('pic'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic'))) echo 'display:none;' ?>">
+                    ドラッグ＆ドロップ
+                </label>
+
+                <div class="area-msg">
+                    <?php
+                        if(!empty($err_msg['pic'])) echo $err_msg['pic'];
+                    ?>
+                </div>
+
+                <div class="btn-container">
+                    <input type="submit" class="btn btn-mid" value="変更する">
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+       <!-- サイドバー -->
+        <?php
+            require('sidebar_mypage.php');
+        ?>
+    </div>
 </div>
 
 <!-- footer -->
 <?php
-require('footer.php');
+    require('footer.php');
 ?>

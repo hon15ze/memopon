@@ -115,80 +115,89 @@ sendMail($from, $to, $subject, $comment);
 }
 ?>
 <?php
-$siteTitle = 'ユーザー登録';
-require('head.php');
+    $siteTitle = 'ユーザー登録';
+    require('head.php');
 ?>
 
 <body class="page-about page-1colum">
 
 <!-- ヘッダー -->
 <?php
-require('header.php');
+    require('header.php');
 ?>
 
 <!-- メインコンテンツ -->
 <div id="contents">
-<div class="site-width">
-<!-- Main -->
-<section id="main" >
+    <div class="site-width">
 
-    <div class="form-container">
+        <!-- Main -->
+        <section id="main" >
+            <div class="form-container">
 
-    <form action="" method="post" class="form">
-        <h2 class="title">ユーザー登録</h2>
-        <div class="area-msg">
-        <?php
-        if(!empty($err_msg['common'])) echo $err_msg['common'];
-        ?>
-        </div>
-        <label class="<?php if(!empty($err_msg['name'])) echo 'err'; ?>">
-            ニックネーム
-        <input type="text" name="name" value="<?php if(!empty($_POST['name'])) echo $_POST['name']; ?>">
-        </label>
-        <div class="area-msg">
-        <?php
-        if(!empty($err_msg['common'])) echo $err_msg['common'];
-        ?>
-        </div>
-        <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
-            Email
-        <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>">
-        </label>
-        <div class="area-msg">
-        <?php
-        if(!empty($err_msg['email'])) echo $err_msg['email'];
-        ?>
-        </div>
-        <label class="<?php if(!empty($err_msg['pass'])) echo 'err'; ?>">
-            パスワード <span style="font-size:12px">※英数字６文字以上</span>
-            <input type="password" name="pass" value="<?php if(!empty($_POST['pass'])) echo $_POST['pass']; ?>">
-        </label>
-        <div class="area-msg">
-        <?php
-        if(!empty($err_msg['pass'])) echo $err_msg['pass'];
-        ?>
-        </div>
-        <label class="<?php if(!empty($err_msg['pass_re'])) echo 'err'; ?>">
-        パスワード（再入力）
-        <input type="password" name="pass_re" value="<?php if(!empty($_POST['pass_re'])) echo $_POST['pass_re']; ?>">
-        </label>
-        <div class="area-msg">
-        <?php
-        if(!empty($err_msg['pass_re'])) echo $err_msg['pass_re'];
-        ?>
-        </div>
-        <div class="btn-container">
-            <input type="submit" class="btn btn-mid" value="登録する">
-        </div>
-    </form>
+                <form action="" method="post" class="form">
+                <h2 class="title">ユーザー登録</h2>
+                    <div class="area-msg">
+                        <?php
+                            if(!empty($err_msg['common'])) echo $err_msg['common'];
+                        ?>
+                    </div>
+
+                    <label class="<?php if(!empty($err_msg['name'])) echo 'err'; ?>">
+                        ニックネーム
+                        <input type="text" name="name" value="<?php if(!empty($_POST['name'])) echo $_POST['name']; ?>">
+                    </label>
+
+                    <div class="area-msg">
+                        <?php
+                            if(!empty($err_msg['common'])) echo $err_msg['common'];
+                        ?>
+                    </div>
+
+                    <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
+                        Email
+                        <input type="text" name="email" value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>">
+                    </label>
+
+                    <div class="area-msg">
+                        <?php
+                            if(!empty($err_msg['email'])) echo $err_msg['email'];
+                        ?>
+                    </div>
+
+                    <label class="<?php if(!empty($err_msg['pass'])) echo 'err'; ?>">
+                        パスワード <span style="font-size:12px">※英数字６文字以上</span>
+                        <input type="password" name="pass" value="<?php if(!empty($_POST['pass'])) echo $_POST['pass']; ?>">
+                    </label>
+
+                    <div class="area-msg">
+                        <?php
+                            if(!empty($err_msg['pass'])) echo $err_msg['pass'];
+                        ?>
+                    </div>
+
+                    <label class="<?php if(!empty($err_msg['pass_re'])) echo 'err'; ?>">
+                        パスワード（再入力）
+                        <input type="password" name="pass_re" value="<?php if(!empty($_POST['pass_re'])) echo $_POST['pass_re']; ?>">
+                    </label>
+
+                    <div class="area-msg">
+                        <?php
+                            if(!empty($err_msg['pass_re'])) echo $err_msg['pass_re'];
+                        ?>
+                    </div>
+
+                    <div class="btn-container">
+                        <input type="submit" class="btn btn-mid" value="登録する">
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
     </div>
-
-</section>
-
-</div>
 </div>
 
     <!-- footer -->
     <?php
-    require('footer.php');
+        require('footer.php');
     ?>

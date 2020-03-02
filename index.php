@@ -37,8 +37,8 @@ debug('現在のページ：'.$currentPageNum);
 debug('画面表示処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 ?>
 <?php
-$siteTitle = 'HOME';
-require('head.php');
+    $siteTitle = 'HOME';
+    require('head.php');
 ?>
 
 <body class="page-home page-2colum">
@@ -50,57 +50,58 @@ require('head.php');
 
 <!-- メインコンテンツ -->
 <div id="contents">
-<div class="site-width">
-<!-- サイドバー -->
-<section id="sidebar">
-<form name="" method="get">
-<h1 class="title">表示順</h1>
-<div class="selectbox">
-<span class="icn_select"></span>
-<select name="sort">
-    <option value="0" <?php if(getFormData('sort',true) == 0){ echo 'selected'; } ?> >選択してください</option>
-    <option value="1" <?php if(getFormData('sort',true) == 1){ echo 'selected'; } ?> >投稿が古い順</option>
-    <option value="2" <?php if(getFormData('sort',true) == 2){ echo 'selected'; } ?> >投稿が新しい順</option>
-    <option value="3" <?php if(getFormData('sort',true) == 3){ echo 'selected'; } ?> >更新が古い順</option>
-    <option value="4" <?php if(getFormData('sort',true) == 4){ echo 'selected'; } ?> >更新が新しい順</option>
-</select>
+    <div class="site-width">
+    <!-- サイドバー -->
+        <section id="sidebar">
+            <form name="" method="get">
+            <h1 class="title">表示順</h1>
+                <div class="selectbox">
+                    <span class="icn_select"></span>
+                    <select name="sort">
+                        <option value="0" <?php if(getFormData('sort',true) == 0){ echo 'selected'; } ?> >選択してください</option>
+                        <option value="1" <?php if(getFormData('sort',true) == 1){ echo 'selected'; } ?> >投稿が古い順</option>
+                        <option value="2" <?php if(getFormData('sort',true) == 2){ echo 'selected'; } ?> >投稿が新しい順</option>
+                        <option value="3" <?php if(getFormData('sort',true) == 3){ echo 'selected'; } ?> >更新が古い順</option>
+                        <option value="4" <?php if(getFormData('sort',true) == 4){ echo 'selected'; } ?> >更新が新しい順</option>
+                    </select>
+                </div>
+                <input class="btn-s" type="submit" value="並べ替え">
+            </form>
+
+        </section>
+
+        <!-- Main -->
+        <section id="main" >
+            <div class="search-title">
+                <div class="search-left">
+                    <span class="total-num"><?php echo sanitize($dbMemoData['total']); ?></span>件の投稿があります
+                </div>
+                <div class="search-right">
+                    <span class="num"><?php echo $currentMinNum+1; ?></span> - <span class="num"><?php echo $currentMinNum+$listSpan; ?></span>件 / <span class="num"><?php echo sanitize($dbMemoData['total']); ?></span>件中
+                </div>
+            </div>
+
+            <div class="panel-list">
+                <?php
+                    foreach($dbMemoData['data'] as $key => $val):
+                ?>
+                <a href="memoDetail.php<?php echo (!empty(appendGetParam())) ? appendGetParam().'&m_id='.$val['m_id'] : '?m_id='.$val['m_id']; ?>" class="panel">
+                    <div class="panel-head">
+                        <img src="<?php echo sanitize($val['pic1']); ?>" alt="">
+                    </div>
+                </a>
+                <?php
+                    endforeach;
+                ?>
+            </div>
+
+                <?php pagination($currentPageNum, $dbMemoData['total_page'],'&sort='.$sort); ?>
+
+        </section>
+
     </div>
-    <input class="btn-s" type="submit" value="並べ替え">
-    </form>
-
-</section>
-
-<!-- Main -->
-<section id="main" >
-<div class="search-title">
-<div class="search-left">
-<span class="total-num"><?php echo sanitize($dbMemoData['total']); ?></span>件の投稿があります
-</div>
-<div class="search-right">
-<span class="num"><?php echo $currentMinNum+1; ?></span> - <span class="num"><?php echo $currentMinNum+$listSpan; ?></span>件 / <span class="num"><?php echo sanitize($dbMemoData['total']); ?></span>件中
-</div>
-</div>
-<div class="panel-list">
-<?php
-foreach($dbMemoData['data'] as $key => $val):
-?>
-<a href="memoDetail.php<?php echo (!empty(appendGetParam())) ? appendGetParam().'&m_id='.$val['m_id'] : '?m_id='.$val['m_id']; ?>" class="panel">
-<div class="panel-head">
-<img src="<?php echo sanitize($val['pic1']); ?>" alt="">
-</div>
-</a>
-<?php
-endforeach;
-?>
-</div>
-
-<?php pagination($currentPageNum, $dbMemoData['total_page'],'&sort='.$sort); ?>
-
-</section>
-
-</div>
 </div>
 <!-- footer -->
 <?php
-require('footer.php');
+    require('footer.php');
 ?>

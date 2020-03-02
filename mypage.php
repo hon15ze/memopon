@@ -35,62 +35,66 @@ require('head.php');
 <body class="page-mypage page-2colum page-logined">
 
 <!-- メニュー -->
-<?php
-require('header.php');
-?>
+    <?php
+      require('header.php');
+    ?>
 
 
 
 <!-- メインコンテンツ -->
-<div id="contents">
-<p id="js-show-msg" style="display:none;" class="msg-slide">
-<?php echo getSessionFlash('msg_success'); ?>
-</p>
-<div class="site-width">
+    <div id="contents">
+        <p id="js-show-msg" style="display:none;" class="msg-slide">
+            <?php echo getSessionFlash('msg_success'); ?>
+        </p>
+     <div class="site-width">
         
-<h1 class="page-title"><i class="fas fa-home"></i>MYPAGE</h1>
+     <h1 class="page-title"><i class="fas fa-home"></i>MYPAGE</h1>
 
 <!-- Main -->
-<section id="main" >
+    <section id="main" >
         <section class="list panel-list">
-        <h2 class="title">
-        投稿一覧
-        </h2>
+            <h2 class="title">
+            投稿一覧
+            </h2>
         <?php
         if(!empty($memoData)):
                 foreach($memoData as $key => $val):
         ?>
         <a href="registMemo.php<?php echo (!empty(appendGetParam())) ? appendGetParam().'&m_id='.$val['m_id'] : '?m_id='.$val['m_id']; ?>" class="panel">
-        <div class="panel-head">
-        <img src="<?php echo showImg(sanitize($val['pic1'])); ?>" >
-        </div>
+        
+            <div class="panel-head">
+                <img src="<?php echo showImg(sanitize($val['pic1'])); ?>" >
+            </div>
         </a>
+
         <?php
         endforeach;
         endif;
         ?>
-</section>
+        </section>
 
 
-<section class="list panel-list">
-<h2 class="title">
-お気に入り一覧
-</h2>
+    <section class="list panel-list">
+      <h2 class="title">
+        お気に入り一覧
+      </h2>
 <?php
 if(!empty($favoriteData)):
         foreach($favoriteData as $key => $val):
 ?>
+
 <a href="memoDetail.php<?php echo (!empty(appendGetParam())) ? appendGetParam().'&m_id='.$val['m_id'] : '?m_id='.$val['m_id']; ?>" class="panel">
-<div class="panel-head">
-<img src="<?php echo showImg(sanitize($val['pic1'])); ?>">
-</div>
+    <div class="panel-head">
+        <img src="<?php echo showImg(sanitize($val['pic1'])); ?>">
+    </div>
 </a>
+    </div>
 <?php
 endforeach;
 endif;
 ?>
-</section>
-</section>
+
+    </section>
 
 <!-- サイドバー -->
 <?php
@@ -98,9 +102,9 @@ require('sidebar_mypage.php');
 ?>
 
 
-</div>
+  </div>
 </div>
 <!-- footer -->
-<?php
-require('footer.php');
-?>
+    <?php
+      require('footer.php');
+    ?>

@@ -62,9 +62,9 @@ if(empty($dbFormData)){
 }else{
    if($dbFormData['comment'] !== $comment){
 //最大文字数チェック
-validMaxLen($comment, 'comment', 500);
+   validMaxLen($comment, 'comment', 500);
 //未入力チェック
-validRequired($comment, 'comment');
+   validRequired($comment, 'comment');
    }
 }
 
@@ -126,98 +126,105 @@ if(empty($err_msg)){
 debug('画面表示処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 ?>
 <?php
-$siteTitle = (!$edit_flg) ? '新規投稿': '編集';
-require('head.php'); 
+   $siteTitle = (!$edit_flg) ? '新規投稿': '編集';
+   require('head.php'); 
 ?>
 
 <body class="page-about page-2colum page-logined">
 
 <!-- メニュー -->
 <?php
-require('header.php');
+   require('header.php');
 ?>
 
 <!-- メインコンテンツ -->
 <div id="contents">
    <div class="site-width">
-<h1 class="page-title"><i class="fas fa-edit"></i><?php echo (!$edit_flg) ? '新規投稿' : '編集する'; ?></h1>
-<!-- Main -->
-<section id="main" >
-<div class="form-container">
-<form action="" method="post" class="form" enctype="multipart/form-data" style="width:100%;box-sizing:border-box;">
- 
-<div style="overflow:hidden;">
-<div class="imgDrop-container">
-画像1
-<label class="area-drop <?php if(!empty($err_msg['pic1'])) echo 'err'; ?>">
-<input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-<input type="file" name="pic1" class="input-file">
-<img src="<?php echo getFormData('pic1'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic1'))) echo 'display:none;' ?>">
-ドラッグ＆ドロップ
-</label>
-<div class="area-msg">
-<?php
-if(!empty($err_msg['pic1'])) echo $err_msg['pic1'];
-?>
-</div>
-</div>
-<div class="imgDrop-container">
-画像２
-<label class="area-drop <?php if(!empty($err_msg['pic2'])) echo 'err'; ?>">
-<input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-<input type="file" name="pic2" class="input-file">
-<img src="<?php echo getFormData('pic2'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic2'))) echo 'display:none;' ?>">
-ドラッグ＆ドロップ
-</label>
-<div class="area-msg">
-<?php
-if(!empty($err_msg['pic2'])) echo $err_msg['pic2'];
-?>
-</div>
-</div>
-<div class="imgDrop-container">
-画像３
-<label class="area-drop <?php if(!empty($err_msg['pic3'])) echo 'err'; ?>">
-<input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-<input type="file" name="pic3" class="input-file">
-<img src="<?php echo getFormData('pic3'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic3'))) echo 'display:none;' ?>">
-ドラッグ＆ドロップ
-</label>
-<div class="area-msg">
-<?php 
-if(!empty($err_msg['pic3'])) echo $err_msg['pic3'];
-?>
-</div>
-</div>
-</div>
+   <h1 class="page-title"><i class="fas fa-edit"></i><?php echo (!$edit_flg) ? '新規投稿' : '編集する'; ?></h1>
 
-<label class="<?php if(!empty($err_msg['comment'])) echo 'err'; ?>">
- ひとこと
-  <textarea name="comment" id="js-count" cols="30" row="10" style="height:150px;"><?php echo getFormData('comment'); ?></textarea>
-  </label>
-  <p class="counter-text"><span id="js-count-view">0</span>/500文字</p>
-  <div class="area-msg">
-<?php
-if(!empty($err_msg['comment'])) echo $err_msg['comment'];
-?>
-</div>
+   <!-- Main -->
+   <section id="main" >
+      <div class="form-container">
+         <form action="" method="post" class="form" enctype="multipart/form-data" style="width:100%;box-sizing:border-box;">
 
-  <div class="btn-container">
-   <input type="submit" class="btn btn-mid" value="<?php echo (!$edit_flg) ? '投稿する' : '更新する'; ?>">
-   <input type="submit" class="btn btn-mid" name="delete" value="削除する">
-</div>
-</form>
-</div>
+            <div style="overflow:hidden;">
+               <div class="imgDrop-container">
+                  画像1
+                  <label class="area-drop <?php if(!empty($err_msg['pic1'])) echo 'err'; ?>">
+                     <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                     <input type="file" name="pic1" class="input-file">
+                     <img src="<?php echo getFormData('pic1'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic1'))) echo 'display:none;' ?>">
+                     ドラッグ＆ドロップ
+                  </label>
+
+                  <div class="area-msg">
+                     <?php
+                        if(!empty($err_msg['pic1'])) echo $err_msg['pic1'];
+                     ?>
+                  </div>
+               </div>
+
+               <div class="imgDrop-container">
+                  画像２
+                  <label class="area-drop <?php if(!empty($err_msg['pic2'])) echo 'err'; ?>">
+                     <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                     <input type="file" name="pic2" class="input-file">
+                     <img src="<?php echo getFormData('pic2'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic2'))) echo 'display:none;' ?>">
+                     ドラッグ＆ドロップ
+                  </label>
+
+                  <div class="area-msg">
+                     <?php
+                        if(!empty($err_msg['pic2'])) echo $err_msg['pic2'];
+                     ?>
+                  </div>
+               </div>
+
+               <div class="imgDrop-container">
+                  画像３
+                  <label class="area-drop <?php if(!empty($err_msg['pic3'])) echo 'err'; ?>">
+                     <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                     <input type="file" name="pic3" class="input-file">
+                     <img src="<?php echo getFormData('pic3'); ?>" alt="" class="prev-img" style="<?php if(empty(getFormData('pic3'))) echo 'display:none;' ?>">
+                     ドラッグ＆ドロップ
+                  </label>
+
+                  <div class="area-msg">
+                     <?php 
+                        if(!empty($err_msg['pic3'])) echo $err_msg['pic3'];
+                     ?>
+                  </div>
+               </div>
+            </div>
+
+                  <label class="<?php if(!empty($err_msg['comment'])) echo 'err'; ?>">
+                     ひとこと
+                     <textarea name="comment" id="js-count" cols="30" row="10" style="height:150px;"><?php echo getFormData('comment'); ?></textarea>
+                  </label>
+
+                  <p class="counter-text"><span id="js-count-view">0</span>/500文字</p>
+                  <div class="area-msg">
+                     <?php
+                        if(!empty($err_msg['comment'])) echo $err_msg['comment'];
+                     ?>
+                  </div>
+
+                  <div class="btn-container">
+                     <input type="submit" class="btn btn-mid" value="<?php echo (!$edit_flg) ? '投稿する' : '更新する'; ?>">
+                     <input type="submit" class="btn btn-mid" name="delete" value="削除する">
+                  </div>
+         </form>
+      </div>
 </section>
 
-<!-- サイドバー -->
-<?php
-require('sidebar_mypage.php');
-?>
-</div>
+         <!-- サイドバー -->
+      <?php
+         require('sidebar_mypage.php');
+      ?>
+   </div>
 </div>
 
 <!-- footer -->
 <?php
-require('footer.php');
+   require('footer.php');
 ?>

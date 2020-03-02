@@ -16,6 +16,7 @@ if(isset($_POST['memoId']) && isset($_SESSION['user_id']) && isLogin()){
     debug('POST送信があります。');
     $m_id = $_POST['memoId'];
     debug('メモID：'.$m_id);
+
     //例外処理
     try {
         // DBへ接続
@@ -46,5 +47,6 @@ if(isset($_POST['memoId']) && isset($_SESSION['user_id']) && isLogin()){
         error_log('エラー発生:' . $e->getMessage());
     }
 }
+
 debug('Ajax処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 ?>

@@ -50,46 +50,47 @@ require('header.php');
 ?>
 
 <!-- メインコンテンツ -->
-    <div id="contents">
-<div class="site-width">
-<!-- Main -->
+<div id="contents">
+  <div class="site-width">
+  <!-- Main -->
    <section id="main" >
 
-<div class="title">
+    <div class="title">
+        <i class="fa fa-heart icn-like js-click-like <?php if(isLike($_SESSION['user_id'], $viewData['m_id'])){ echo 'active'; } ?>" aria-hidden="true" data-memoid="<?php echo sanitize($viewData['m_id']); ?>" ></i>
+    </div>
 
+    <div class="memo-img-container">
+        <div class="img-main">
+            <img src="<?php echo showImg(sanitize($viewData['pic1'])); ?>" alt="メイン画像" id="js-switch-img-main">
+        </div>
 
-<i class="fa fa-heart icn-like js-click-like <?php if(isLike($_SESSION['user_id'], $viewData['m_id'])){ echo 'active'; } ?>" aria-hidden="true" data-memoid="<?php echo sanitize($viewData['m_id']); ?>" ></i>
-</div>
-<div class="memo-img-container">
-<div class="img-main">
-<img src="<?php echo showImg(sanitize($viewData['pic1'])); ?>" alt="メイン画像" id="js-switch-img-main">
-</div>
-<div class="img-sub">
-<img src="<?php echo showImg(sanitize($viewData['pic1'])); ?>" alt="画像1" class="js-switch-img-sub">
-<img src="<?php echo showImg(sanitize($viewData['pic2'])); ?>" alt="画像2" class="js-switch-img-sub">
-<img src="<?php echo showImg(sanitize($viewData['pic3'])); ?>" alt="画像3" class="js-switch-img-sub">
-</div>
-</div>
+        <div class="img-sub">
+            <img src="<?php echo showImg(sanitize($viewData['pic1'])); ?>" alt="画像1" class="js-switch-img-sub">
+            <img src="<?php echo showImg(sanitize($viewData['pic2'])); ?>" alt="画像2" class="js-switch-img-sub">
+            <img src="<?php echo showImg(sanitize($viewData['pic3'])); ?>" alt="画像3" class="js-switch-img-sub">
+        </div>
+    </div>
 
-<div class="m-d">
-<div class="prof-img">
-<img src="<?php echo showImg(sanitize($viewUserData['pic'])); ?>" alt="プロフ画像" class="prof-i">
-<p><?php echo sanitize($viewUserData['username']); ?></p>
-</div>
-<div class="memo-detail">
-<p><?php echo sanitize($viewData['comment']); ?></p>
-</div>
-</div>
+    <div class="m-d">
+        <div class="prof-img">
+          <img src="<?php echo showImg(sanitize($viewUserData['pic'])); ?>" alt="プロフ画像" class="prof-i">
+          <p><?php echo sanitize($viewUserData['username']); ?></p>
+        </div>
 
-   <div class="memo-favo">
-    <div class="item-left">
-   <a href="index.php<?php echo appendGetParam(array('m_id')); ?>">&lt; 投稿一覧に戻る</a>
-      </div>
-     </div>
+        <div class="memo-detail">
+          <p><?php echo sanitize($viewData['comment']); ?></p>
+        </div>
+    </div>
+
+    <div class="memo-favo">
+        <div class="item-left">
+        <a href="index.php<?php echo appendGetParam(array('m_id')); ?>">&lt; 投稿一覧に戻る</a>
+        </div>
+    </div>
 
    </section>
 
-</div>
+  </div>
 </div>
 
 <!-- footer -->

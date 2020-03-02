@@ -87,76 +87,79 @@ E-mail ＊＊＊＊＊＊＊＊＊＊＊
 EOF;
 sendMail($from, $to, $subject, $comment);
 
-//認証に必要な情報をセッションへ保存
-$_SESSION['pass'] = $pass;
-debug('セッション変数の中身：'.print_r($_SESSION,true));
+    //認証に必要な情報をセッションへ保存
+    $_SESSION['pass'] = $pass;
+    debug('セッション変数の中身：'.print_r($_SESSION,true));
 
-//セッション削除
-session_unset();
-$_SESSION['msg_success'] = SUC03;
-debug('セッション変数の中身：'.print_r($_SESSION,true));
+    //セッション削除
+    session_unset();
+    $_SESSION['msg_success'] = SUC03;
+    debug('セッション変数の中身：'.print_r($_SESSION,true));
 
-header("Location:login.php"); //ログインページへ
+     header("Location:login.php"); //ログインページへ
 
-        }else{
-            debug('クエリに失敗しました。');
+            }else{
+                debug('クエリに失敗しました。');
+                $err_msg['common'] = MSG07;
+            }
+
+        } catch (Exception $e) {
+            error_log('エラー発生:' . $e->getMessage());
             $err_msg['common'] = MSG07;
         }
+      }
 
-    } catch (Exception $e) {
-        error_log('エラー発生:' . $e->getMessage());
-        $err_msg['common'] = MSG07;
     }
-}
-    }
-}
+  }
 }
 ?>
 <?php
-$siteTitle = 'パスワード再発行認証';
-require('head.php');
+    $siteTitle = 'パスワード再発行認証';
+    require('head.php');
 ?>
 
 <body class="page-login page-1colum">
 
-<!-- メニュー -->
-<?php
-require('header.php');
-?>
-<p id="js-show-msg" style="display:none;" class="msg-slide">
-<?php echo getSessionFlash('msg_success'); ?>
-</p>
+    <!-- メニュー -->
+    <?php
+        require('header.php');
+    ?>
+    <p id="js-show-msg" style="display:none;" class="msg-slide">
+        <?php echo getSessionFlash('msg_success'); ?>
+    </p>
 
-<!-- メインコンテンツ -->
-<div id="contents">
-<div class="site-width">
-<!-- Main -->
-<section id="main">
+    <!-- メインコンテンツ -->
+        <div id="contents">
+          <section class="site-width">
+    <!-- Main -->
+        <section id="main">
 
-<div class="form-container">
+        <div class="form-container">
 
-<form action="" method="post" class="form">
-<p>ご指定のメールアドレスにお送りした【パスワード再発行認証】メール内にある「認証キー」をご入力ください。</p>
-<div class="area-msg">
-<?php if(!empty($err_msg['common'])) echo $err_msg['common']; ?>
-</div>
-<label class="<?php if(!empty($err_msg['token'])) echo 'err'; ?>">
-認証キー
-<input type="text" name="token" value="<?php echo getFormData('token'); ?>">
-</label>
-<div class="area-msg">
-<?php if(!empty($err_msg['token'])) echo $err_msg['token']; ?>
-</div>
-<div class="btn-container">
-<input type="submit" class="btn btn-mid" value="再発行する">
-</div>
-</form>
-</div>
-<a href="passRemindSend.php">&lt; パスワード再発行メールを再度送信する</a>
-</section>
+        <form action="" method="post" class="form">
+            <p>ご指定のメールアドレスにお送りした【パスワード再発行認証】メール内にある「認証キー」をご入力ください。</p>
+            
+            <div class="area-msg">
+                <?php if(!empty($err_msg['common'])) echo $err_msg['common']; ?>
+            </div>
+            <label class="<?php if(!empty($err_msg['token'])) echo 'err'; ?>">
+                認証キー
+                <input type="text" name="token" value="<?php echo getFormData('token'); ?>">
+            </label>
 
-</div>
-</div>
+            <div class="area-msg">
+                <?php if(!empty($err_msg['token'])) echo $err_msg['token']; ?>
+            </div>
+            <div class="btn-container">
+                <input type="submit" class="btn btn-mid" value="再発行する">
+            </div>
+        </form>
+        </div>
+        <a href="passRemindSend.php">&lt; パスワード再発行メールを再度送信する</a>
+
+        </section>
+
+        </div>
 
 <!-- footer -->
 <?php
