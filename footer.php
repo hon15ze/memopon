@@ -2,7 +2,10 @@
         <p>Copyright <a href="about.php">memopon</a>. All Rights Reserved.</p>
     </footer>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
     <script>
     $(function(){
         var $ftr = $('#footer');

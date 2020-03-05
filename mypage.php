@@ -75,30 +75,30 @@ require('head.php');
 
 
     <section class="list panel-list">
-      <h2 class="title">
+        <h2 class="title">
         お気に入り一覧
-      </h2>
-<?php
-if(!empty($favoriteData)):
+        </h2>
+        <?php
+        if(!empty($favoriteData)):
         foreach($favoriteData as $key => $val):
-?>
+        ?>
 
-<a href="memoDetail.php<?php echo (!empty(appendGetParam())) ? appendGetParam().'&m_id='.$val['m_id'] : '?m_id='.$val['m_id']; ?>" class="panel">
-    <div class="panel-head">
-        <img src="<?php echo showImg(sanitize($val['pic1'])); ?>">
-    </div>
-</a>
-    </div>
-<?php
-endforeach;
-endif;
-?>
+        <a href="memoDetail.php<?php echo (!empty(appendGetParam())) ? appendGetParam().'&m_id='.$val['m_id'] : '?m_id='.$val['m_id']; ?>" class="panel">
+            <div class="panel-head">
+                <img src="<?php echo showImg(sanitize($val['pic1'])); ?>">
+            </div>
+        </a>
+        <?php
+            endforeach;
+            endif;
+        ?>
 
     </section>
+</section>
 
 <!-- サイドバー -->
 <?php
-require('sidebar_mypage.php');
+    require('sidebar_mypage.php');
 ?>
 
 
